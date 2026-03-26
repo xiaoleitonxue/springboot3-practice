@@ -16,7 +16,7 @@ public class JDBC {
 
         Statement st = conn.createStatement();
 
-        int i = st.executeUpdate("update user set age = 255 where id = 1");
+        int i = st.executeUpdate("update user set age = 21 where id = 1");
 
         System.out.println("更新成功" + i);
 
