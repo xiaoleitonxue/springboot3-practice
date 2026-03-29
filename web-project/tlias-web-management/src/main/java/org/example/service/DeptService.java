@@ -12,4 +12,6 @@ public interface DeptService {
     void add(Dept dept);
 
     Dept findById(Integer deptid);
+
+    void update(Dept dept);
 }
