@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public Result handleException(Exception e) {
-        log.error("程序出错了", e.getMessage());
+        log.error("程序出错了", e);
         return Result.error("操作失败, 联系管理员");
     }
 
