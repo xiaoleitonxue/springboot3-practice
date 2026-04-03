@@ -14,4 +14,6 @@ public interface ClazzService {
     Clazz getById(Integer id);
 
     void updataClazz(Clazz clazz);
+
+    Object list();
 }

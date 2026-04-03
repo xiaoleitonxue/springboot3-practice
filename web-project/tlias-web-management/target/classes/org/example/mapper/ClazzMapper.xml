@@ -9,7 +9,7 @@
     </insert>
 
     <select id="findAll" resultType="org.example.pojo.Clazz">
-        select * from clazz c
+        select c.* from clazz c
         <where>
             <if test="name != null and name != ''">
                 and c.name like concat('%',#{name},'%')
@@ -21,6 +21,10 @@
                 and c.end_date between #{begin} and #{end}
             </if>
         </where>
+    </select>
+
+    <select id="list" resultType="org.example.pojo.Clazz">
+        select * from clazz
     </select>
 
     <update id="updataClazz">

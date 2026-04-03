@@ -53,4 +53,10 @@ public class ClazzController {
         return Result.success();
     }
 
+    @GetMapping("/list")
+    public Result list() {
+        log.info("查询列表");
+        return Result.success(clazzService.list());
+    }
+
 }
