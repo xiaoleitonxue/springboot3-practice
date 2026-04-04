@@ -94,7 +94,7 @@
     </delete>
 
     <select id="findAll" resultType="org.example.pojo.Student">
-        select * from student s
+        select s.*, c.name clazzName from student s LEFT JOIN clazz c on s.clazz_id = c.id
         <where>
             <if test="name != null and name != ''">
                 and s.name like concat('%',#{name},'%')

@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.pojo.ClazzCountOption;
 import org.example.pojo.JobOption;
 import org.example.pojo.Result;
 import org.example.service.ReportService;
@@ -32,6 +33,20 @@ public class ReportController {
         log.info("开始生成员工性别数据");
         List<Map<String, Object>> genderList = reportService.getEmpGenderData();
         return Result.success(genderList);
+    }
+
+    @GetMapping("/studentDegreeData")
+    public Result getStudentDegreeData() {
+        log.info("开始生成学生学历数据");
+        List<Map<String, Object>> degreeList = reportService.getStudentDegreeData();
+        return Result.success(degreeList);
+    }
+
+    @GetMapping("/studentCountData")
+    public Result getStudentCountData() {
+        log.info("开始生成学生数量数据");
+        ClazzCountOption countList = reportService.getStudentCountData();
+        return Result.success(countList);
     }
 
 }

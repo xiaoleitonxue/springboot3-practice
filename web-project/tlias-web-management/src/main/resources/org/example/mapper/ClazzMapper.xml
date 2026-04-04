@@ -9,7 +9,15 @@
     </insert>
 
     <select id="findAll" resultType="org.example.pojo.Clazz">
-        select c.* from clazz c
+        select c.*, e.name masterName,
+        case
+        when c.begin_date IS NULL then '未开班'
+        when c.begin_date &gt; CURDATE() then '未开班'
+        when c.end_date IS NULL then '在读'
+        when c.end_date &lt; CURDATE() then '已结课'
+        else '在读'
+        end as status
+        from clazz c LEFT JOIN emp e ON c.master_id = e.id
         <where>
             <if test="name != null and name != ''">
                 and c.name like concat('%',#{name},'%')

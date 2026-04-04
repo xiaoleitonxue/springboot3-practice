@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
 
         Page<Student> p = (Page<Student>) rows;
 
-        return new PageResult<>(p.getTotal(), p.getResult());
+        return new PageResult<Student>(p.getTotal(), p.getResult());
     }
 
     @Override
