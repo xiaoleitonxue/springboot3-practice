@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.mapper.DeptMapper;
+import org.example.mapper.EmpMapper;
 import org.example.pojo.Dept;
 import org.example.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptMapper deptMapper;
 
+    @Autowired
+    private EmpMapper empMapper;
+
     @Override
     public List<Dept> findAll() {
         return deptMapper.findAll();
@@ -22,6 +26,10 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public void deleteById(Integer id) {
+        int count = empMapper.countByDeptId(id);
+        if (count > 0) {
+            throw new RuntimeException("对不起，当前部门下有员工，不能直接删除！");
+        }
         deptMapper.deleteById(id);
     }
 

@@ -26,4 +26,15 @@ public class GlobalExceptionHandler {
         return Result.error( arr[2] + " 已存在");
     }
 
+    @ExceptionHandler
+    public Result handleRuntimeException(RuntimeException e){
+        log.error("程序出错啦~", e);
+        String message = e.getMessage();
+        if (message != null && message.contains("部门下有员工")) {
+            return Result.error(message);
+        }
+        return Result.error("操作失败, 联系管理员");
+    }
+
+
 }

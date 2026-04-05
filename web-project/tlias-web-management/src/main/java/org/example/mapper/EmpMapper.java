@@ -33,4 +33,7 @@ public interface EmpMapper {
 
     void updateById(Emp emp);
 
+    @Select("select count(*) from emp where dept_id = #{deptId}")
+    int countByDeptId(Integer deptId);
+
 }
