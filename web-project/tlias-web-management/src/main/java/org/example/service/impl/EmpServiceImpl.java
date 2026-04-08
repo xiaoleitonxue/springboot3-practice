@@ -8,6 +8,7 @@ import org.example.mapper.EmpMapper;
 import org.example.pojo.*;
 import org.example.service.EmpLogService;
 import org.example.service.EmpService;
+import org.example.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -114,7 +116,20 @@ public class EmpServiceImpl implements EmpService {
         Emp e = empMapper.selectByUsernameAndPassword(emp);
         if (e != null) {
             log.info("员工登录：{}", e);
-            LoginInfo info = new LoginInfo(e.getId(), e.getUsername(), e.getName(), "");
+
+
+            /*Map<String, Object> map = new HashMap<>();
+            map.put("id", e.getId());
+            map.put("username", e.getUsername());
+            String jwt = JwtUtils.generateToken(map);*/
+
+            String jwt = JwtUtils.generateToken(new HashMap<String, Object>() {{
+                put("id", e.getId());
+                put("username", e.getUsername());
+            }});
+
+
+            LoginInfo info = new LoginInfo(e.getId(), e.getUsername(), e.getName(), jwt);
             return info;
         }
         return null;
