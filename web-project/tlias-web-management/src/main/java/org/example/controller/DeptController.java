@@ -3,6 +3,7 @@ package org.example.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.example.anno.Log;
 import org.example.pojo.Dept;
 import org.example.pojo.Result;
 import org.example.service.DeptService;
@@ -46,6 +47,7 @@ public class DeptController {
         return Result.success();
     }*/
 
+    @Log
     @DeleteMapping("/depts")
     public Result delete(Integer id){
         //System.out.println("删除数据" + id);
@@ -54,6 +56,7 @@ public class DeptController {
         return Result.success();
     }
 
+    @Log
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept){
         //System.out.println("添加数据" + dept);
@@ -77,6 +80,7 @@ public class DeptController {
         return Result.success(dept);
     }
 
+    @Log
     @PutMapping("/depts")
     public Result update(@RequestBody Dept dept){
         //System.out.println("修改数据" + dept);
