@@ -1,0 +1,30 @@
+package org.example.filter;
+
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
+
+//@WebFilter(urlPatterns = "/*")
+@Slf4j
+public class DemoFilter implements Filter {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        Filter.super.init(filterConfig);
+        log.info("初始化过滤器：{}", filterConfig.getFilterName());
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        log.info("拦截请求,开始执行过滤器：{}", getClass().getName());
+
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    @Override
+    public void destroy() {
+        Filter.super.destroy();
+        log.info("销毁过滤器：{}", getClass().getName());
+    }
+}
