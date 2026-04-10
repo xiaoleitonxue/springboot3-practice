@@ -1,0 +1,6 @@
+
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: java-tlias2
+    region: cn-beijing
