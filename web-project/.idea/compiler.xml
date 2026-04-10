@@ -18,6 +18,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-aop-quickstart" />
         <module name="springboot-web-config" />
+        <module name="itheima-utils" />
       </profile>
     </annotationProcessing>
   </component>

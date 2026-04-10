@@ -1,5 +1,9 @@
 package com.itheima;
 
+import com.example.HeaderParser;
+import com.example.TokenParser;
+import com.google.gson.Gson;
+import com.itheima.pojo.Result;
 import com.itheima.utils.AliyunOSSOperator;
 import com.itheima.utils.AliyunOSSProperties;
 import org.junit.jupiter.api.Test;
@@ -16,6 +20,9 @@ class SpringbootWebTests {
     @Autowired
     private AliyunOSSOperator aliyunOSSOperator;
 
+    @Autowired
+    private Gson gson;
+
     @Test
     void testScope(){
         for (int i = 0; i < 100; i++) {
@@ -27,5 +34,27 @@ class SpringbootWebTests {
     void testUpload() throws Exception {
 
     }
+
+    @Test
+    void testGson(){
+        System.out.println(gson.toJson(Result.success(null)));
+    }
+
+    /*@Autowired
+    private TokenParser tokenParser;
+
+    @Test
+    void testTokenParser(){
+        tokenParser.parse();
+    }*/
+
+    @Autowired
+    private HeaderParser headerParser;
+
+    @Test
+    void testHeaderParser(){
+        headerParser.parse();
+    }
+
 
 }
